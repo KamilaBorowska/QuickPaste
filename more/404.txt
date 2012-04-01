@@ -1,0 +1,64 @@
+./display_paste
+if [ $? -ne 0 ]; then
+    echo 404. Not Found.
+fi
+===
+function displayPaste() {
+    "use strict";
+    try {
+        console.log(getPaste());
+    }
+    catch (e) {
+        console.log('404. Not Found.');
+    }
+}
+===
+def display_paste
+  begin
+    print getPaste
+  rescue PasteNotFoundError
+    print '404. Not Found.'
+  end
+end
+===
+static void DisplayPaste() {
+    try {
+        Console.WriteLine(GetPaste());
+    }
+    catch (PasteNotFoundException e) {
+        console.WriteLine("404. Not Found.")
+    }
+}
+===
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL [URL] was not Found on this server.</p>
+<p>Additionally, a 404 Not Found
+error was encountered while trying to use an ErrorDocument to handle the request.</p>
+</body></html>
+===
+<?php
+function display_paste() {
+    try {
+        echo get_paste();
+    }
+    catch (PasteNotFoundException $e) {
+        echo '404. Not Found.';
+    }
+}
+===
+sub display_paste {
+    eval {
+        print get_paste;
+    };
+    print '404. Not Found.' if $@;
+}
+===
+def display_paste():
+    try:
+        print(get_paste)
+    except PasteNotFoundError, e:
+        print '404. Not Found.'
