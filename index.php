@@ -77,7 +77,10 @@ if ($id && $_SERVER['REQUEST_URI'] !== '/') {
 if (isset($paste)) {
     if ($paste) {
         $paste = $paste[0]['paste'];
-        echo '<pre><code>', htmlspecialchars($paste), '</code></pre>';
+        $paste = htmlspecialchars($paste);
+        $message = preg_replace('{https?://[^\s]*[^.,!?):"\']+}i',
+                                '<a href="\0">\0</a>', $paste);
+        echo '<pre><code>', $message, '</code></pre>';
     }
     else {
         $message = file_get_contents('more/404.txt');
@@ -94,7 +97,7 @@ if (isset($paste)) {
 <textarea name="paste" placeholder=
 "Paste your code. You don't have to choose language."><?php
 if (isset($paste) && $paste !== array()) {
-    echo htmlspecialchars($paste);
+    echo $paste;
 }
 ?></textarea>
 <input type="submit" value="Paste!">
